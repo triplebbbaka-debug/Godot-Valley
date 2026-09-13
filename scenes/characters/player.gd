@@ -3,17 +3,24 @@ extends CharacterBody2D
 
 #Establishes direction
 var direction: Vector2
+var last_direction: Vector2
 var can_move: bool = true
-var current_tool: Enum.Tool
+var current_tool: Enum.Tool = Enum.Tool.WATER
 var current_seed: Enum.Seed
 var speed := 50
 @onready var move_state_machine = $Animation/AnimationTree.get("parameters/MoveStateMachine/playback")
 @onready var tool_state_machine = $Animation/AnimationTree.get("parameters/ToolStateMachine/playback")
+signal tool_use(tool: Enum.Tool, pos: Vector2)
 func _physics_process(_delta: float) -> void:
 	if can_move:
 		get_basic_input()
 		move()
 		animate()
+		
+	#Once we start moving, this value gets updated.
+	if direction:
+		#Once we stop moving, this value gets retained here.
+		last_direction = direction
 #Handles movement
 
 func get_basic_input():
@@ -41,7 +48,7 @@ func animate():
 	else:
 		move_state_machine.travel('Idle')
 func tool_use_emit():
-	print('tool')
+	tool_use.emit(current_tool, position + last_direction * 16 + Vector2(0,4))
 
 func _on_animation_tree_animation_started(_anim_name: StringName) -> void:
 	can_move = false
