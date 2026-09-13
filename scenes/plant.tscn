@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bv1vvvyi8rgs0"]
+
+[ext_resource type="Texture2D" uid="uid://b41e01wg87oo5" path="res://graphics/plants/wheat.png" id="1_fi0kw"]
+[ext_resource type="Script" uid="uid://dgdtyatirccdg" path="res://scenes/plant.gd" id="1_odjdt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 3.0
+height = 6.0
+
+[node name="Plant" type="StaticBody2D" unique_id=1866226662]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_odjdt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1523298339]
+position = Vector2(0, -9)
+texture = ExtResource("1_fi0kw")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2061452226]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_g4v7s")

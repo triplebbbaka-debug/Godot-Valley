@@ -5,7 +5,7 @@ extends CharacterBody2D
 var direction: Vector2
 var last_direction: Vector2
 var can_move: bool = true
-var current_tool: Enum.Tool = Enum.Tool.WATER
+var current_tool: Enum.Tool = Enum.Tool.FISH
 var current_seed: Enum.Seed
 var speed := 50
 @onready var move_state_machine = $Animation/AnimationTree.get("parameters/MoveStateMachine/playback")
