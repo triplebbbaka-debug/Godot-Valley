@@ -1,7 +1,7 @@
 extends Node2D
 
 var used_cells: Array[Vector2i]
-var plant_scene = preload("res://scenes/plant.tscn")
+var plant_scene = preload("res://scenes/objects/plant.tscn")
 @onready var player = $Objects/Player
 
 func _on_player_tool_use(tool: int, pos: Vector2) -> void:
@@ -14,11 +14,9 @@ func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 			var cell = $Layers/GrassLayer.get_cell_tile_data(grid_coord) as TileData
 			if cell and cell.get_custom_data('farmable'):
 				$Layers/DirtLayer.set_cells_terrain_connect([grid_coord], 0, 0)
-		
 		Enum.Tool.WATER:
 			if has_soil:
 				$Layers/SoilLayer.set_cell(grid_coord, 0, Vector2i(randi_range(0,2), 0))
-				
 		Enum.Tool.FISH:
 			if not grid_coord in $Layers/GrassLayer.get_used_cells():
 				print('fishing')
@@ -29,3 +27,7 @@ func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 				var plant = plant_scene.instantiate()
 				plant.setup(grid_coord,$Objects)
 				used_cells.append(grid_coord)
+		Enum.Tool.AXE, Enum.Tool.SWORD:
+			for object in get_tree().get_nodes_in_group('Objects'):
+				if object.position.distance_to(pos) < 20:
+					object.hit(tool)

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dye2047rkrtaa"]
+
+[ext_resource type="Shader" uid="uid://b2rvm0ofwjn6p" path="res://shaders/flash.tres" id="1_pl58d"]
+[ext_resource type="Script" uid="uid://cb05n8yn55aay" path="res://scenes/shaders/flash_sprite_2d.gd" id="2_pl58d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_caaul"]
+resource_local_to_scene = true
+shader = ExtResource("1_pl58d")
+
+[node name="FlashSprite2D" type="Sprite2D" unique_id=1363619524]
+material = SubResource("ShaderMaterial_caaul")
+script = ExtResource("2_pl58d")
