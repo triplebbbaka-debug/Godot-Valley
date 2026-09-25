@@ -11,6 +11,7 @@ var speed := 50
 @onready var move_state_machine = $Animation/AnimationTree.get("parameters/MoveStateMachine/playback")
 @onready var tool_state_machine = $Animation/AnimationTree.get("parameters/ToolStateMachine/playback")
 signal tool_use(tool: Enum.Tool, pos: Vector2)
+signal diagnose
 func _physics_process(_delta: float) -> void:
 	if can_move:
 		get_basic_input()
@@ -34,6 +35,8 @@ func get_basic_input():
 	if Input.is_action_just_pressed("action"):
 		tool_state_machine.travel(Data.TOOL_STATE_ANIMATIONS[current_tool])
 		$Animation/AnimationTree.set("parameters/ToolOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	if Input.is_action_just_pressed("diagnose"):
+		diagnose.emit()
 func move():
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed

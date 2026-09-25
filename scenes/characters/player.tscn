@@ -1556,6 +1556,13 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_76oj4")
 
+[node name="ToolUI" parent="." unique_id=1641874260 instance=ExtResource("3_76oj4")]
+z_index = 1
+offset_left = -50.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 0.0
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1051189958]
 zoom = Vector2(4, 4)
 
@@ -1589,8 +1596,6 @@ parameters/MoveStateMachine/Walk/blend_position = Vector2(0, 0)
 parameters/ToolOneShot/active = false
 parameters/ToolOneShot/internal_active = false
 parameters/ToolOneShot/request = 0
-
-[node name="ToolUI" parent="." unique_id=1641874260 instance=ExtResource("3_76oj4")]
 
 [connection signal="animation_finished" from="Animation/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="animation_started" from="Animation/AnimationTree" to="." method="_on_animation_tree_animation_started"]

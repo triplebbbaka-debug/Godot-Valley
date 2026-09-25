@@ -16,6 +16,7 @@ const apple_texture = preload("res://graphics/plants/apple.png")
 #Tree is killable
 
 func _ready() -> void:
+	$FlashSprite2D.frame = [0,1].pick_random()
 	create_apple(randi_range(0,2))
 func hit(tool: Enum.Tool):
 	if tool == Enum.Tool.AXE:

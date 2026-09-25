@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2dd7m10jvk0f" path="res://scenes/ui/tool_ui.gd" id="1_440vi"]
 
 [node name="ToolUI" type="Control" unique_id=1641874260]
+y_sort_enabled = true
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 3
 anchors_preset = 8
@@ -16,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_440vi")
 
 [node name="ToolContainer" type="HBoxContainer" parent="." unique_id=838202774]
+y_sort_enabled = true
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 1
 anchors_preset = -1
@@ -31,6 +33,7 @@ grow_vertical = 2
 accessibility_region = true
 
 [node name="SeedContainer" type="HBoxContainer" parent="." unique_id=26311667]
+y_sort_enabled = true
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 1
 anchors_preset = -1

@@ -1,22 +1,47 @@
 [gd_scene format=3 uid="uid://bv1vvvyi8rgs0"]
 
 [ext_resource type="Script" uid="uid://dgdtyatirccdg" path="res://scenes/objects/plant.gd" id="1_enafc"]
-[ext_resource type="Texture2D" uid="uid://b41e01wg87oo5" path="res://graphics/plants/wheat.png" id="2_c2iuo"]
+[ext_resource type="Script" uid="uid://ds2whfk07n2f1" path="res://resources/plant_res.gd" id="2_7bmar"]
+[ext_resource type="PackedScene" uid="uid://dye2047rkrtaa" path="res://scenes/shaders/flash_sprite_2d.tscn" id="3_0a33w"]
+[ext_resource type="Shader" uid="uid://b2rvm0ofwjn6p" path="res://shaders/flash.tres" id="4_yb5fs"]
+
+[sub_resource type="Resource" id="Resource_7vdy5"]
+resource_local_to_scene = true
+script = ExtResource("2_7bmar")
+metadata/_custom_type_script = "uid://ds2whfk07n2f1"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0a33w"]
+resource_local_to_scene = true
+shader = ExtResource("4_yb5fs")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 3.0
 height = 6.0
 
-[node name="Plant" type="StaticBody2D" unique_id=1866226662]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+
+[node name="Plant" type="StaticBody2D" unique_id=1866226662 groups=["Plants"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_enafc")
+res = SubResource("Resource_7vdy5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1523298339]
+[node name="FlashSprite2D" parent="." unique_id=1363619524 instance=ExtResource("3_0a33w")]
+material = SubResource("ShaderMaterial_0a33w")
 position = Vector2(0, -9)
-texture = ExtResource("2_c2iuo")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2061452226]
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="CollisionArea" type="Area2D" parent="." unique_id=1607674329]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" unique_id=1468972334]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]

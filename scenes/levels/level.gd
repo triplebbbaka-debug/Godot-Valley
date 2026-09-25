@@ -2,6 +2,7 @@ extends Node2D
 
 var used_cells: Array[Vector2i]
 var plant_scene = preload("res://scenes/objects/plant.tscn")
+var plant_info_scene = preload("res://scenes/ui/plant_info.tscn")
 @onready var player = $Objects/Player
 @onready var daytransition_material = $Overlay/CanvasLayer/DaytransitionLayer.material
 @export var daytime_color: Gradient
@@ -25,14 +26,22 @@ func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 				print("not fishing")
 		Enum.Tool.SEED:
 			if has_soil and grid_coord not in used_cells:
+				var plant_res = PlantResource.new()
+				plant_res.setup($Objects/Player.current_seed)
 				var plant = plant_scene.instantiate()
-				plant.setup(grid_coord,$Objects)
+				plant.setup(grid_coord,$Objects, plant_res, plant_death)
 				used_cells.append(grid_coord)
+				
+				print(used_cells)
+				var plant_info = plant_info_scene.instantiate()
+				plant_info.setup(plant_res)
+				$Overlay/CanvasLayer/PlantInfoContainer.add(plant_info)
 		Enum.Tool.AXE, Enum.Tool.SWORD:
 			for object in get_tree().get_nodes_in_group('Objects'):
 				if object.position.distance_to(pos) < 20:
 					object.hit(tool)
-
+func _on_player_diagnose() -> void:
+	$Overlay/CanvasLayer/PlantInfoContainer.visible = not $Overlay/CanvasLayer/PlantInfoContainer.visible
 func _process(_delta: float) -> void:
 	var daytime_point = 1 - ($Timers/DaylightTimer.time_left / $Timers/DaylightTimer.wait_time)
 	var color = daytime_color.sample(daytime_point)
@@ -48,7 +57,15 @@ func day_restart():
 	tween.tween_property(daytransition_material, "shader_parameter/progress", 0.0, 1.0)
 	
 func level_reset():
+	for plant in get_tree().get_nodes_in_group("Plants"):
+		plant.grow(plant.coord in $Layers/SoilLayer.get_used_cells())
+	$Layers/SoilLayer.clear()
+	$Overlay/CanvasLayer/PlantInfoContainer.update_all()
+	
 	$Timers/DaylightTimer.start()
 	for object in get_tree().get_nodes_in_group("Objects"):
 		if 'reset' in object:
 			object.reset()
+func plant_death(coord: Vector2i):
+	used_cells.erase(coord)
+	print(used_cells)

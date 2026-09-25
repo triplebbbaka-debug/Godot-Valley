@@ -17,17 +17,22 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="GodewValley"
 run/main_scene="uid://dkaf0otbgtrp5"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="uid://lycoeuq7ei6e"
+config/icon="uid://mjgko8kdq102"
 
 [autoload]
 
 Enum="*res://global/enums.gd"
 Data="*res://global/data.gd"
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [global_group]
 
 Objects=""
 Player=""
+Plants=""
 
 [input]
 
