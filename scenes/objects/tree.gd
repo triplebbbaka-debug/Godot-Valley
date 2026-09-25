@@ -10,12 +10,13 @@ var health := 4:
 			$CollisionShape2D.shape = shape
 			$CollisionShape2D.position.y = 6
 const apple_texture = preload("res://graphics/plants/apple.png")
+
 #tree should flash when hit
 #Apples should fall from tree when hit
 #Tree is killable
 
 func _ready() -> void:
-	create_apple(3)
+	create_apple(randi_range(0,2))
 func hit(tool: Enum.Tool):
 	if tool == Enum.Tool.AXE:
 		$FlashSprite2D.flash()
@@ -33,3 +34,9 @@ func get_apple():
 	if $Apples.get_children():
 		$Apples.get_children().pick_random().queue_free()
 		print("You got one apple!")
+func reset():
+	if health > 0:
+		for apple in $Apples.get_children():
+			apple.queue_free()
+		create_apple(randi_range(0,2))
+		health = 3
