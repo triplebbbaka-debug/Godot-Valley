@@ -27,8 +27,10 @@ func get_basic_input():
 	if Input.is_action_just_pressed("tool_backward") or Input.is_action_just_pressed("tool_forward"):
 		var dir = Input.get_axis("tool_backward", "tool_forward")
 		current_tool = posmod(current_tool + int(dir), Enum.Tool.size()) as Enum.Tool
+		$ToolUI.reveal(true)
 	if Input.is_action_just_pressed("seed_forward"):
 		current_seed = posmod(current_seed + 1, Enum.Seed.size()) as Enum.Seed
+		$ToolUI.reveal(false)
 	if Input.is_action_just_pressed("action"):
 		tool_state_machine.travel(Data.TOOL_STATE_ANIMATIONS[current_tool])
 		$Animation/AnimationTree.set("parameters/ToolOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)

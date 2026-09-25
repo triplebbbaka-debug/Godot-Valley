@@ -29,3 +29,23 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 accessibility_region = true
+
+[node name="SeedContainer" type="HBoxContainer" parent="." unique_id=26311667]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+accessibility_region = true
+
+[node name="HideTimer" type="Timer" parent="." unique_id=1876174642]
+one_shot = true
+
+[connection signal="timeout" from="HideTimer" to="." method="_on_hide_timer_timeout"]
