@@ -1570,6 +1570,7 @@ zoom = Vector2(4, 4)
 texture = ExtResource("3_6eyoc")
 hframes = 33
 vframes = 4
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=456062976]
 shape = SubResource("CapsuleShape2D_atpat")
@@ -1596,6 +1597,9 @@ parameters/MoveStateMachine/Walk/blend_position = Vector2(0, 0)
 parameters/ToolOneShot/active = false
 parameters/ToolOneShot/internal_active = false
 parameters/ToolOneShot/request = 0
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1420742318]
+collision_mask = 8
 
 [connection signal="animation_finished" from="Animation/AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="animation_started" from="Animation/AnimationTree" to="." method="_on_animation_tree_animation_started"]

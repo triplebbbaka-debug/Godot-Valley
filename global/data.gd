@@ -95,5 +95,5 @@ const TOOL_STATE_ANIMATIONS = {
 	Enum.Tool.SEED: 'Seed',
 	}
 
-
+var can_sleep: bool
 var forecast_rain: bool

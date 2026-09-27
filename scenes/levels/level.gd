@@ -8,6 +8,9 @@ var raining: bool:
 		raining = value
 		$Overlay/RaindropsParticles.emitting = value
 		$Layers/RainFloorParticles.emitting = value
+var sleep: bool:
+	set(value):
+		sleep = value
 @onready var player = $Objects/Player
 @onready var daytransition_material = $Overlay/CanvasLayer/DaytransitionLayer.material
 @export var daytime_color: Gradient
@@ -50,12 +53,13 @@ func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 					object.hit(tool)
 func _on_player_diagnose() -> void:
 	$Overlay/CanvasLayer/PlantInfoContainer.visible = not $Overlay/CanvasLayer/PlantInfoContainer.visible
+func _on_player_day_change() -> void:
+	day_restart()
 func _process(_delta: float) -> void:
 	var daytime_point = 1 - ($Timers/DaylightTimer.time_left / $Timers/DaylightTimer.wait_time)
 	var color = daytime_color.sample(daytime_point).lerp(rain_color, 0.5 if raining else 0.0)
 	$Overlay/DaytimeColor.color = color
-	if Input.is_action_just_pressed("day_change"):
-		day_restart()
+	
 func _ready() -> void:
 	Data.forecast_rain = [true, false].pick_random()
 func day_restart():

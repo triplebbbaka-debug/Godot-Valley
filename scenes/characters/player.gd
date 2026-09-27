@@ -8,6 +8,8 @@ var can_move: bool = true
 var current_tool: Enum.Tool = Enum.Tool.SWORD
 var current_seed: Enum.Seed
 var speed := 50
+@warning_ignore("unused_signal")
+signal day_change
 @onready var move_state_machine = $Animation/AnimationTree.get("parameters/MoveStateMachine/playback")
 @onready var tool_state_machine = $Animation/AnimationTree.get("parameters/ToolStateMachine/playback")
 signal tool_use(tool: Enum.Tool, pos: Vector2)
@@ -22,6 +24,8 @@ func _physics_process(_delta: float) -> void:
 	if direction:
 		#Once we stop moving, this value gets retained here.
 		last_direction = direction
+		var ray_y = int(direction.y) if not direction.x else 0
+		$RayCast2D.target_position = Vector2(direction.x,ray_y).normalized() * 20
 #Handles movement
 
 func get_basic_input():
@@ -33,8 +37,11 @@ func get_basic_input():
 		current_seed = posmod(current_seed + 1, Enum.Seed.size()) as Enum.Seed
 		$ToolUI.reveal(false)
 	if Input.is_action_just_pressed("action"):
-		tool_state_machine.travel(Data.TOOL_STATE_ANIMATIONS[current_tool])
-		$Animation/AnimationTree.set("parameters/ToolOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		if not $RayCast2D.get_collider():
+			tool_state_machine.travel(Data.TOOL_STATE_ANIMATIONS[current_tool])
+			$Animation/AnimationTree.set("parameters/ToolOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		else: $RayCast2D.get_collider().interact(self)
+			
 	if Input.is_action_just_pressed("diagnose"):
 		diagnose.emit()
 func move():
@@ -59,3 +66,4 @@ func _on_animation_tree_animation_started(_anim_name: StringName) -> void:
 	can_move = false
 func _on_animation_tree_animation_finished(_anim_name: StringName) -> void:
 	can_move = true
+	
