@@ -10,12 +10,15 @@ var current_seed: Enum.Seed
 var speed := 50
 var current_state: Enum.State
 var current_style: Enum.Style
+var current_machine: Enum.Machine
 @warning_ignore("unused_signal")
 signal day_change
 @onready var move_state_machine = $Animation/AnimationTree.get("parameters/MoveStateMachine/playback")
 @onready var tool_state_machine = $Animation/AnimationTree.get("parameters/ToolStateMachine/playback")
 signal tool_use(tool: Enum.Tool, pos: Vector2)
 signal diagnose
+signal build(current_machine)
+signal machine_change(current_machine: Enum.Machine)
 func _physics_process(_delta: float) -> void:
 	match current_state:
 		Enum.State.DEFAULT:
@@ -25,14 +28,17 @@ func _physics_process(_delta: float) -> void:
 				animate()
 		Enum.State.FISHING:
 			get_fishing_input()
+		Enum.State.BUILDING:
+			get_building_input()
+			move()
+			animate()
+	
 	#Once we start moving, this value gets updated.
 	if direction:
 		#Once we stop moving, this value gets retained here.
 		last_direction = direction
 		var ray_y = int(direction.y) if not direction.x else 0
 		$RayCast2D.target_position = Vector2(direction.x,ray_y).normalized() * 20
-#Handles movement
-
 func get_basic_input():
 	if Input.is_action_just_pressed("tool_backward") or Input.is_action_just_pressed("tool_forward"):
 		var dir = Input.get_axis("tool_backward", "tool_forward")
@@ -52,9 +58,21 @@ func get_basic_input():
 	if Input.is_action_just_pressed("style_toggle"):
 		current_style = posmod(current_style + 1, Enum.Style.size()) as Enum.Style
 		$Sprite2D.texture = Data.PLAYER_SKINS[current_style]
+	if Input.is_action_just_pressed("build"):
+		current_state = Enum.State.BUILDING
 func get_fishing_input():
 	if Input.is_action_just_pressed("action"):
 		$FishingGame.action()
+func get_building_input():
+	if Input.is_action_just_pressed("build"):
+		current_state = Enum.State.DEFAULT
+	if Input.is_action_just_pressed("tool_backward") or Input.is_action_just_pressed("tool_forward"):
+		var dir = Input.get_axis("tool_backward", "tool_forward")
+		current_machine = posmod(current_machine + int(dir), Enum.Machine.size()) as Enum.Machine
+		machine_change.emit(current_machine)
+		print(current_machine)
+	if Input.is_action_just_pressed("action"):
+		build.emit(current_machine)
 func move():
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
@@ -85,3 +103,6 @@ func _on_animation_tree_animation_started(_anim_name: StringName) -> void:
 	can_move = false
 func _on_animation_tree_animation_finished(_anim_name: StringName) -> void:
 	can_move = true
+func get_machine_coords() -> Vector2i:
+	var pos = position + last_direction * 20 + Vector2(0,0)
+	return Vector2i(pos.x/Data.TILE_SIZE, pos.y/Data.TILE_SIZE) * Data.TILE_SIZE + Vector2i(8,8)
