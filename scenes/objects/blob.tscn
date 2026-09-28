@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://b2rvm0ofwjn6p" path="res://shaders/flash.tres" id="3_vg2cp"]
 [ext_resource type="Texture2D" uid="uid://b466fqj7w4mne" path="res://graphics/characters/blob.png" id="4_ckn0h"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcmgo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y2e6"]
 resource_local_to_scene = true
 shader = ExtResource("3_vg2cp")
 shader_parameter/Color = Color(1, 1, 1, 1)
@@ -83,18 +83,20 @@ _data = {
 &"move": SubResource("Animation_amh0s")
 }
 
-[node name="Blob" type="CharacterBody2D" unique_id=1160142046 groups=["Objects"]]
+[node name="Blob" type="CharacterBody2D" unique_id=1160142046 groups=["Enemies", "Objects"]]
+y_sort_enabled = true
 collision_layer = 4
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_3y2e6")
 
 [node name="FlashSprite2D" parent="." unique_id=1363619524 instance=ExtResource("2_eba5w")]
-material = SubResource("ShaderMaterial_vcmgo")
+material = SubResource("ShaderMaterial_3y2e6")
 texture = ExtResource("4_ckn0h")
 hframes = 14
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1247460807]
+y_sort_enabled = true
 position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_g4v7s")
 

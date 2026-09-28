@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://gbpjkq6ikogm"]
+
+[ext_resource type="Script" uid="uid://bfd7buyo6845s" path="res://projectile.gd" id="1_u4e1p"]
+[ext_resource type="Texture2D" uid="uid://bcs34147dv0mx" path="res://graphics/machines/projectile.png" id="2_hjcpx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+
+[node name="Projectile" type="Area2D" unique_id=1391833678]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_u4e1p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2022375870]
+texture = ExtResource("2_hjcpx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754357988]
+scale = Vector2(0.30056602, 0.28705543)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Timer" type="Timer" parent="." unique_id=1697758439]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

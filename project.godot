@@ -29,6 +29,7 @@ Data="*res://global/data.gd"
 Objects=""
 Player=""
 Plants=""
+Enemies=""
 
 [input]
 

@@ -3,6 +3,7 @@ extends Node2D
 var used_cells: Array[Vector2i]
 var plant_scene = preload("res://scenes/objects/plant.tscn")
 var plant_info_scene = preload("res://scenes/ui/plant_info.tscn")
+var projectile_scene = preload("res://scenes/machines/projectile.tscn")
 var raining: bool:
 	set(value):
 		raining = value
@@ -57,8 +58,8 @@ func _process(_delta: float) -> void:
 	var daytime_point = 1 - ($Timers/DaylightTimer.time_left / $Timers/DaylightTimer.wait_time)
 	var color = daytime_color.sample(daytime_point).lerp(rain_color, 0.5 if raining else 0.0)
 	$Overlay/DaytimeColor.color = color
-	
 func _ready() -> void:
+	$Objects/Scarecrow.connect("shoot_projectile", create_projectile)
 	Data.forecast_rain = [true, false].pick_random()
 func day_restart():
 	var tween = create_tween()
@@ -87,3 +88,7 @@ func level_reset():
 func plant_death(coord: Vector2i):
 	used_cells.erase(coord)
 	print(used_cells)
+func create_projectile(start_pos: Vector2, dir: Vector2):
+	var projectile = projectile_scene.instantiate()
+	projectile.setup(start_pos, dir)
+	$Objects.add_child(projectile)
