@@ -24,10 +24,6 @@ config/icon="uid://mjgko8kdq102"
 Enum="*res://global/enums.gd"
 Data="*res://global/data.gd"
 
-[display]
-
-window/vsync/vsync_mode=0
-
 [global_group]
 
 Objects=""

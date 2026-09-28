@@ -50,7 +50,7 @@ func get_basic_input():
 		diagnose.emit()
 func get_fishing_input():
 	if Input.is_action_just_pressed("action"):
-		pass
+		$FishingGame.action()
 func move():
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
@@ -70,8 +70,13 @@ func animate():
 func tool_use_emit():
 	tool_use.emit(current_tool, position + last_direction * 16 + Vector2(0,4))
 func start_fishing():
+	$FishingGame.reveal()
 	current_state = Enum.State.FISHING
 	$Animation/AnimationTree.set("parameters/FishBlend/blend_amount", 1)
+func stop_fishing():
+	can_move = true
+	current_state = Enum.State.DEFAULT
+	$Animation/AnimationTree.set("parameters/FishBlend/blend_amount", 0)
 func _on_animation_tree_animation_started(_anim_name: StringName) -> void:
 	can_move = false
 func _on_animation_tree_animation_finished(_anim_name: StringName) -> void:
