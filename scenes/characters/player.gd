@@ -9,6 +9,7 @@ var current_tool: Enum.Tool = Enum.Tool.SWORD
 var current_seed: Enum.Seed
 var speed := 50
 var current_state: Enum.State
+var current_style: Enum.Style
 @warning_ignore("unused_signal")
 signal day_change
 @onready var move_state_machine = $Animation/AnimationTree.get("parameters/MoveStateMachine/playback")
@@ -48,6 +49,9 @@ func get_basic_input():
 			
 	if Input.is_action_just_pressed("diagnose"):
 		diagnose.emit()
+	if Input.is_action_just_pressed("style_toggle"):
+		current_style = posmod(current_style + 1, Enum.Style.size()) as Enum.Style
+		$Sprite2D.texture = Data.PLAYER_SKINS[current_style]
 func get_fishing_input():
 	if Input.is_action_just_pressed("action"):
 		$FishingGame.action()

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cpv12fur04hkk" path="res://graphics/ui/fish_progress_bg.png" id="2_e7q0f"]
 [ext_resource type="Texture2D" uid="uid://big0akfwjmocq" path="res://graphics/ui/fish_progress.png" id="3_unues"]
 [ext_resource type="Texture2D" uid="uid://bjyisaqia5rw1" path="res://graphics/ui/bar.png" id="4_b5p8b"]
-[ext_resource type="Texture2D" uid="uid://bynnb60cf2brm" path="res://graphics/icons/silverfish.png" id="5_s7mi0"]
+[ext_resource type="Texture2D" uid="uid://cufccts2vhufa" path="res://graphics/icons/goldfish.png" id="6_unues"]
 
 [node name="FishingGame" type="Node2D" unique_id=1368300318]
 z_index = 2
@@ -62,7 +62,7 @@ texture_progress = ExtResource("3_unues")
 texture = ExtResource("4_b5p8b")
 
 [node name="FishSprite" type="Sprite2D" parent="." unique_id=1576726208]
-texture = ExtResource("5_s7mi0")
+texture = ExtResource("6_unues")
 
 [node name="FishUpdateTimer" type="Timer" parent="." unique_id=585410964]
 autostart = true
