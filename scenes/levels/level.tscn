@@ -13,11 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://gxfhn8vu2d0l" path="res://scenes/ui/plant_info_container.tscn" id="8_ouxo3"]
 [ext_resource type="Texture2D" uid="uid://lgw5hjy4jrx0" path="res://graphics/weather/floor.png" id="8_xfk5q"]
 [ext_resource type="Texture2D" uid="uid://da1u0rhfjt8a3" path="res://graphics/weather/drops.png" id="9_xfk5q"]
-[ext_resource type="PackedScene" uid="uid://c1ngrhhxby0j6" path="res://scenes/objects/blob.tscn" id="10_b8j7q"]
 [ext_resource type="PackedScene" uid="uid://cqhykhx23v1su" path="res://scenes/levels/house.tscn" id="10_qogh7"]
 [ext_resource type="PackedScene" uid="uid://bofqkfrx24syk" path="res://scenes/machines/scarecrow.tscn" id="11_qhnmj"]
-[ext_resource type="PackedScene" uid="uid://jagwlsp7f7ck" path="res://scenes/machines/sprinkler.tscn" id="12_8iyoh"]
-[ext_resource type="PackedScene" uid="uid://drbptkvju1amb" path="res://scenes/machines/fisher.tscn" id="13_mq31s"]
 
 [sub_resource type="Gradient" id="Gradient_g4v7s"]
 offsets = PackedFloat32Array(0, 0.2949438, 0.5702247, 1)
@@ -66,6 +63,7 @@ texture = ExtResource("2_bovvr")
 0:0/0/terrains_peering_bit/bottom_right_corner = 0
 0:0/0/terrains_peering_bit/bottom_side = 0
 0:0/0/custom_data_1 = true
+0:0/0/custom_data_2 = Vector2i(-1, 0)
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
@@ -75,6 +73,7 @@ texture = ExtResource("2_bovvr")
 1:0/0/terrains_peering_bit/bottom_left_corner = 0
 1:0/0/terrains_peering_bit/left_side = 0
 1:0/0/custom_data_1 = true
+1:0/0/custom_data_2 = Vector2i(0, -1)
 2:0/0 = 0
 2:0/0/terrain_set = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.333334, 5.333333, -5.333334, 5.333333, 8, 0, 8, 0, 0, -8, 0)
@@ -82,15 +81,18 @@ texture = ExtResource("2_bovvr")
 2:0/0/terrains_peering_bit/bottom_left_corner = 0
 2:0/0/terrains_peering_bit/left_side = 0
 2:0/0/custom_data_1 = true
+2:0/0/custom_data_2 = Vector2i(1, 0)
 3:0/0 = 0
 3:0/0/terrain_set = 0
 3:0/0/terrains_peering_bit/bottom_side = 0
+3:0/0/custom_data_2 = Vector2i(0, -1)
 4:0/0 = 0
 4:0/0/terrain_set = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -5.333334, -5.333333, -5.333334, -5.333333, 8, 0, 8, 0, 0, 8, 0)
 4:0/0/terrains_peering_bit/right_side = 0
 4:0/0/terrains_peering_bit/bottom_side = 0
 4:0/0/custom_data_1 = true
+4:0/0/custom_data_2 = Vector2i(-1, 0)
 5:0/0 = 0
 5:0/0/terrain_set = 0
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
@@ -99,6 +101,7 @@ texture = ExtResource("2_bovvr")
 5:0/0/terrains_peering_bit/bottom_left_corner = 0
 5:0/0/terrains_peering_bit/left_side = 0
 5:0/0/custom_data_1 = true
+5:0/0/custom_data_2 = Vector2i(0, -1)
 6:0/0 = 0
 6:0/0/terrain_set = 0
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
@@ -107,12 +110,14 @@ texture = ExtResource("2_bovvr")
 6:0/0/terrains_peering_bit/bottom_side = 0
 6:0/0/terrains_peering_bit/left_side = 0
 6:0/0/custom_data_1 = true
+6:0/0/custom_data_2 = Vector2i(0, -1)
 7:0/0 = 0
 7:0/0/terrain_set = 0
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.333334, 5.333333, -5.333334, 5.333333, 8, 0, 8, 0, 0, -8, 0)
 7:0/0/terrains_peering_bit/bottom_side = 0
 7:0/0/terrains_peering_bit/left_side = 0
 7:0/0/custom_data_1 = true
+7:0/0/custom_data_2 = Vector2i(1, 0)
 8:0/0 = 0
 8:0/0/terrain_set = 0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 0, -8, 0)
@@ -120,6 +125,7 @@ texture = ExtResource("2_bovvr")
 8:0/0/terrains_peering_bit/bottom_side = 0
 8:0/0/terrains_peering_bit/left_side = 0
 8:0/0/custom_data_1 = true
+8:0/0/custom_data_2 = Vector2i(0, -1)
 9:0/0 = 0
 9:0/0/terrain_set = 0
 9:0/0/terrains_peering_bit/right_side = 0
@@ -138,6 +144,7 @@ texture = ExtResource("2_bovvr")
 0:1/0/terrains_peering_bit/top_side = 0
 0:1/0/terrains_peering_bit/top_right_corner = 0
 0:1/0/custom_data_1 = true
+0:1/0/custom_data_2 = Vector2i(-1, 0)
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrains_peering_bit/right_side = 0
@@ -158,10 +165,12 @@ texture = ExtResource("2_bovvr")
 2:1/0/terrains_peering_bit/top_left_corner = 0
 2:1/0/terrains_peering_bit/top_side = 0
 2:1/0/custom_data_1 = true
+2:1/0/custom_data_2 = Vector2i(1, 0)
 3:1/0 = 0
 3:1/0/terrain_set = 0
 3:1/0/terrains_peering_bit/bottom_side = 0
 3:1/0/terrains_peering_bit/top_side = 0
+3:1/0/custom_data_2 = Vector2i(1, 0)
 4:1/0 = 0
 4:1/0/terrain_set = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 0, -8, 0, 8)
@@ -170,6 +179,7 @@ texture = ExtResource("2_bovvr")
 4:1/0/terrains_peering_bit/top_side = 0
 4:1/0/terrains_peering_bit/top_right_corner = 0
 4:1/0/custom_data_1 = true
+4:1/0/custom_data_2 = Vector2i(-1, 0)
 5:1/0 = 0
 5:1/0/terrain_set = 0
 5:1/0/terrains_peering_bit/right_side = 0
@@ -198,6 +208,7 @@ texture = ExtResource("2_bovvr")
 7:1/0/terrains_peering_bit/top_left_corner = 0
 7:1/0/terrains_peering_bit/top_side = 0
 7:1/0/custom_data_1 = true
+7:1/0/custom_data_2 = Vector2i(1, 0)
 8:1/0 = 0
 8:1/0/terrain_set = 0
 8:1/0/terrains_peering_bit/right_side = 0
@@ -223,6 +234,7 @@ texture = ExtResource("2_bovvr")
 0:2/0/terrains_peering_bit/top_side = 0
 0:2/0/terrains_peering_bit/top_right_corner = 0
 0:2/0/custom_data_1 = true
+0:2/0/custom_data_2 = Vector2i(-1, 0)
 1:2/0 = 0
 1:2/0/terrain_set = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, 0, 8, 0)
@@ -232,6 +244,7 @@ texture = ExtResource("2_bovvr")
 1:2/0/terrains_peering_bit/top_side = 0
 1:2/0/terrains_peering_bit/top_right_corner = 0
 1:2/0/custom_data_1 = true
+1:2/0/custom_data_2 = Vector2i(0, 1)
 2:2/0 = 0
 2:2/0/terrain_set = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.333334, 5.333333, 5.333334, 5.333333, -8, 0, -8, 0, 0, -8, 0)
@@ -239,9 +252,11 @@ texture = ExtResource("2_bovvr")
 2:2/0/terrains_peering_bit/top_left_corner = 0
 2:2/0/terrains_peering_bit/top_side = 0
 2:2/0/custom_data_1 = true
+2:2/0/custom_data_2 = Vector2i(1, 0)
 3:2/0 = 0
 3:2/0/terrain_set = 0
 3:2/0/terrains_peering_bit/top_side = 0
+3:2/0/custom_data_2 = Vector2i(0, 1)
 4:2/0 = 0
 4:2/0/terrain_set = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, -8, 0, -8, 0, 8)
@@ -250,6 +265,7 @@ texture = ExtResource("2_bovvr")
 4:2/0/terrains_peering_bit/bottom_side = 0
 4:2/0/terrains_peering_bit/top_side = 0
 4:2/0/custom_data_1 = true
+4:2/0/custom_data_2 = Vector2i(-1, 0)
 5:2/0 = 0
 5:2/0/terrain_set = 0
 5:2/0/terrains_peering_bit/right_side = 0
@@ -278,6 +294,7 @@ texture = ExtResource("2_bovvr")
 7:2/0/terrains_peering_bit/left_side = 0
 7:2/0/terrains_peering_bit/top_side = 0
 7:2/0/custom_data_1 = true
+7:2/0/custom_data_2 = Vector2i(1, 0)
 8:2/0 = 0
 8:2/0/terrain_set = 0
 8:2/0/terrains_peering_bit/right_side = 0
@@ -307,13 +324,16 @@ texture = ExtResource("2_bovvr")
 0:3/0/terrain_set = 0
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -5.333334, -5.333333, -5.333334, -5.333333, 8, 0, 8, 0, 0, 8, 0)
 0:3/0/terrains_peering_bit/right_side = 0
+0:3/0/custom_data_2 = Vector2i(-1, 0)
 1:3/0 = 0
 1:3/0/terrain_set = 0
 1:3/0/terrains_peering_bit/right_side = 0
 1:3/0/terrains_peering_bit/left_side = 0
+1:3/0/custom_data_2 = Vector2i(0, 1)
 2:3/0 = 0
 2:3/0/terrain_set = 0
 2:3/0/terrains_peering_bit/left_side = 0
+2:3/0/custom_data_2 = Vector2i(1, 0)
 3:3/0 = 0
 3:3/0/terrain_set = 0
 4:3/0 = 0
@@ -322,6 +342,7 @@ texture = ExtResource("2_bovvr")
 4:3/0/terrains_peering_bit/right_side = 0
 4:3/0/terrains_peering_bit/top_side = 0
 4:3/0/custom_data_1 = true
+4:3/0/custom_data_2 = Vector2i(-1, 0)
 5:3/0 = 0
 5:3/0/terrain_set = 0
 5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, 0, 8, 0)
@@ -330,6 +351,7 @@ texture = ExtResource("2_bovvr")
 5:3/0/terrains_peering_bit/top_left_corner = 0
 5:3/0/terrains_peering_bit/top_side = 0
 5:3/0/custom_data_1 = true
+5:3/0/custom_data_2 = Vector2i(0, 1)
 6:3/0 = 0
 6:3/0/terrain_set = 0
 6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, -8, 0, 8, 0)
@@ -338,12 +360,14 @@ texture = ExtResource("2_bovvr")
 6:3/0/terrains_peering_bit/top_side = 0
 6:3/0/terrains_peering_bit/top_right_corner = 0
 6:3/0/custom_data_1 = true
+6:3/0/custom_data_2 = Vector2i(0, 1)
 7:3/0 = 0
 7:3/0/terrain_set = 0
 7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 5.333334, 5.333333, 5.333334, 5.333333, -8, 0, -8, 0, 0, -8, 0)
 7:3/0/terrains_peering_bit/left_side = 0
 7:3/0/terrains_peering_bit/top_side = 0
 7:3/0/custom_data_1 = true
+7:3/0/custom_data_2 = Vector2i(1, 0)
 8:3/0 = 0
 8:3/0/terrain_set = 0
 8:3/0/terrains_peering_bit/right_side = 0
@@ -357,6 +381,7 @@ texture = ExtResource("2_bovvr")
 9:3/0/terrains_peering_bit/top_side = 0
 9:3/0/terrains_peering_bit/top_right_corner = 0
 9:3/0/custom_data_1 = true
+9:3/0/custom_data_2 = Vector2i(0, 1)
 10:3/0 = 0
 10:3/0/terrain_set = 0
 10:3/0/terrains_peering_bit/right_side = 0
@@ -419,6 +444,7 @@ texture = ExtResource("2_bovvr")
 4:4/0/terrains_peering_bit/bottom_side = 0
 4:4/0/terrains_peering_bit/top_side = 0
 4:4/0/custom_data_1 = true
+4:4/0/custom_data_2 = Vector2i(-1, 0)
 5:4/0 = 0
 5:4/0/terrain_set = 0
 5:4/0/terrains_peering_bit/right_side = 0
@@ -444,6 +470,7 @@ texture = ExtResource("2_bovvr")
 7:4/0/terrains_peering_bit/left_side = 0
 7:4/0/terrains_peering_bit/top_side = 0
 7:4/0/custom_data_1 = true
+7:4/0/custom_data_2 = Vector2i(1, 0)
 8:4/0 = 0
 8:4/0/terrain_set = 0
 8:4/0/terrains_peering_bit/right_side = 0
@@ -462,6 +489,8 @@ custom_data_layer_0/name = "farmable"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "fishable"
 custom_data_layer_1/type = 1
+custom_data_layer_2/name = "coast"
+custom_data_layer_2/type = 6
 sources/0 = SubResource("TileSetAtlasSource_b2cq8")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xb4v1"]
@@ -966,23 +995,8 @@ process_material = SubResource("ParticleProcessMaterial_g4v7s")
 [node name="Objects" type="Node2D" parent="." unique_id=1348185968]
 y_sort_enabled = true
 
-[node name="Blob" parent="Objects" unique_id=1160142046 instance=ExtResource("10_b8j7q")]
-position = Vector2(-98, 174)
-
-[node name="Blob2" parent="Objects" unique_id=1981667786 instance=ExtResource("10_b8j7q")]
-position = Vector2(-148, 88)
-
-[node name="Blob3" parent="Objects" unique_id=1754095160 instance=ExtResource("10_b8j7q")]
-position = Vector2(-104, -30)
-
 [node name="Scarecrow" parent="Objects" unique_id=1519189184 instance=ExtResource("11_qhnmj")]
 position = Vector2(-51, 139)
-
-[node name="Sprinkler" parent="Objects" unique_id=481217043 instance=ExtResource("12_8iyoh")]
-position = Vector2(-26, 136)
-
-[node name="Fisher" parent="Objects" unique_id=934128704 instance=ExtResource("13_mq31s")]
-position = Vector2(-208, 179)
 
 [node name="Player" parent="Objects" unique_id=729870403 instance=ExtResource("2_b2cq8")]
 y_sort_enabled = true
@@ -997,102 +1011,101 @@ y_sort_enabled = true
 [node name="SimpleObject" parent="Objects/Decor" unique_id=2112621101 instance=ExtResource("8_7pb6i")]
 z_index = -1
 position = Vector2(86, 360)
+size = 1
+random = true
+
+[node name="SimpleObject2" parent="Objects/Decor" unique_id=1296819940 instance=ExtResource("8_7pb6i")]
+z_index = -1
+position = Vector2(-5, 215)
 size = 0
 style = 1
 random = true
 
-[node name="SimpleObject2" parent="Objects/Decor" unique_id=1296819940 instance=ExtResource("8_7pb6i")]
-position = Vector2(-5, 215)
-style = 1
-random = true
-
 [node name="SimpleObject3" parent="Objects/Decor" unique_id=252235767 instance=ExtResource("8_7pb6i")]
-z_index = -1
 position = Vector2(113, 482)
-size = 1
+size = 3
 style = 1
 random = true
 
 [node name="SimpleObject4" parent="Objects/Decor" unique_id=1998637016 instance=ExtResource("8_7pb6i")]
-z_index = -1
 position = Vector2(-73, 215)
-size = 1
-style = 1
+size = 3
 random = true
 
 [node name="SimpleObject5" parent="Objects/Decor" unique_id=1426809760 instance=ExtResource("8_7pb6i")]
 position = Vector2(301, 419)
 size = 3
+style = 1
 random = true
 
 [node name="SimpleObject6" parent="Objects/Decor" unique_id=1189836510 instance=ExtResource("8_7pb6i")]
 position = Vector2(239, 135)
 size = 3
-style = 1
 random = true
 
 [node name="SimpleObject7" parent="Objects/Decor" unique_id=1931852361 instance=ExtResource("8_7pb6i")]
 position = Vector2(195, 548)
-style = 1
 random = true
 
 [node name="SimpleObject8" parent="Objects/Decor" unique_id=1424262702 instance=ExtResource("8_7pb6i")]
 z_index = -1
 position = Vector2(506, 497)
-size = 0
+size = 1
 style = 1
 random = true
 
 [node name="SimpleObject9" parent="Objects/Decor" unique_id=400178138 instance=ExtResource("8_7pb6i")]
+z_index = -1
 position = Vector2(24, 522)
-size = 3
+size = 0
+style = 1
 random = true
 
 [node name="SimpleObject10" parent="Objects/Decor" unique_id=110188160 instance=ExtResource("8_7pb6i")]
+z_index = -1
 position = Vector2(606, 410)
-size = 3
+size = 0
+style = 1
 random = true
 
 [node name="SimpleObject11" parent="Objects/Decor" unique_id=592936533 instance=ExtResource("8_7pb6i")]
-z_index = -1
 position = Vector2(380, 298)
-size = 1
+size = 3
 random = true
 
 [node name="SimpleObject12" parent="Objects/Decor" unique_id=564492885 instance=ExtResource("8_7pb6i")]
-z_index = -1
 position = Vector2(140, 25)
-size = 1
+size = 3
 random = true
 
 [node name="SimpleObject13" parent="Objects/Decor" unique_id=670164897 instance=ExtResource("8_7pb6i")]
-z_index = -1
 position = Vector2(-123, 28)
-size = 0
+size = 3
 style = 1
 random = true
 
 [node name="SimpleObject14" parent="Objects/Decor" unique_id=15828142 instance=ExtResource("8_7pb6i")]
 z_index = -1
 position = Vector2(697, 32)
-size = 1
+size = 0
 style = 1
 random = true
 
 [node name="SimpleObject15" parent="Objects/Decor" unique_id=1055700005 instance=ExtResource("8_7pb6i")]
+z_index = -1
 position = Vector2(269, 52)
+size = 1
 random = true
 
 [node name="SimpleObject16" parent="Objects/Decor" unique_id=291038464 instance=ExtResource("8_7pb6i")]
 z_index = -1
 position = Vector2(58, 86)
 size = 1
+style = 1
 random = true
 
 [node name="SimpleObject17" parent="Objects/Decor" unique_id=419735068 instance=ExtResource("8_7pb6i")]
-z_index = -1
 position = Vector2(-159, 113)
-size = 0
 style = 1
 random = true
 
@@ -1100,7 +1113,6 @@ random = true
 z_index = -1
 position = Vector2(-146, 301)
 size = 1
-style = 1
 random = true
 
 [node name="SimpleObject19" parent="Objects/Decor" unique_id=1465743937 instance=ExtResource("8_7pb6i")]
@@ -1110,24 +1122,27 @@ size = 0
 random = true
 
 [node name="SimpleObject20" parent="Objects/Decor" unique_id=179345953 instance=ExtResource("8_7pb6i")]
+z_index = -1
 position = Vector2(86, 169)
-size = 3
-style = 1
+size = 1
 random = true
 
 [node name="SimpleObject21" parent="Objects/Decor" unique_id=1742059623 instance=ExtResource("8_7pb6i")]
 position = Vector2(344, 12)
+size = 3
 random = true
 
 [node name="SimpleObject22" parent="Objects/Decor" unique_id=41788211 instance=ExtResource("8_7pb6i")]
 z_index = -1
 position = Vector2(409, 52)
-size = 0
-style = 1
+size = 1
 random = true
 
 [node name="SimpleObject23" parent="Objects/Decor" unique_id=1216927173 instance=ExtResource("8_7pb6i")]
+z_index = -1
 position = Vector2(530, 151)
+size = 1
+style = 1
 random = true
 
 [node name="SimpleObject24" parent="Objects/Decor" unique_id=1268720274 instance=ExtResource("8_7pb6i")]
@@ -1137,40 +1152,38 @@ size = 1
 random = true
 
 [node name="SimpleObject25" parent="Objects/Decor" unique_id=422203850 instance=ExtResource("8_7pb6i")]
-z_index = -1
 position = Vector2(455, -12)
-size = 0
-style = 1
-random = true
-
-[node name="SimpleObject26" parent="Objects/Decor" unique_id=24361726 instance=ExtResource("8_7pb6i")]
-position = Vector2(611, 66)
 size = 3
 random = true
 
-[node name="SimpleObject27" parent="Objects/Decor" unique_id=290074453 instance=ExtResource("8_7pb6i")]
+[node name="SimpleObject26" parent="Objects/Decor" unique_id=24361726 instance=ExtResource("8_7pb6i")]
 z_index = -1
+position = Vector2(611, 66)
+size = 0
+random = true
+
+[node name="SimpleObject27" parent="Objects/Decor" unique_id=290074453 instance=ExtResource("8_7pb6i")]
 position = Vector2(551, 11)
+size = 3
+random = true
+
+[node name="SimpleObject28" parent="Objects/Decor" unique_id=514845779 instance=ExtResource("8_7pb6i")]
+z_index = -1
+position = Vector2(714, 84)
 size = 1
 style = 1
 random = true
 
-[node name="SimpleObject28" parent="Objects/Decor" unique_id=514845779 instance=ExtResource("8_7pb6i")]
-position = Vector2(714, 84)
-size = 3
-style = 1
-random = true
-
 [node name="SimpleObject29" parent="Objects/Decor" unique_id=1575127423 instance=ExtResource("8_7pb6i")]
+z_index = -1
 position = Vector2(740, 225)
-style = 1
+size = 1
 random = true
 
 [node name="SimpleObject30" parent="Objects/Decor" unique_id=2041489271 instance=ExtResource("8_7pb6i")]
 z_index = -1
 position = Vector2(655, 127)
-size = 1
-style = 1
+size = 0
 random = true
 
 [node name="Trees" type="Node2D" parent="Objects/Decor" unique_id=707523401]
@@ -1255,8 +1268,35 @@ wait_time = 180.0
 one_shot = true
 autostart = true
 
+[node name="BlobTimer" type="Timer" parent="Timers" unique_id=1671806510]
+autostart = true
+
+[node name="BlobSpawnPositions" type="Node2D" parent="." unique_id=2047081507]
+
+[node name="Marker2D" type="Marker2D" parent="BlobSpawnPositions" unique_id=321561464]
+position = Vector2(-164, 51)
+
+[node name="Marker2D2" type="Marker2D" parent="BlobSpawnPositions" unique_id=192853403]
+position = Vector2(302, 22)
+
+[node name="Marker2D3" type="Marker2D" parent="BlobSpawnPositions" unique_id=1748744042]
+position = Vector2(31, 301)
+
+[node name="Marker2D4" type="Marker2D" parent="BlobSpawnPositions" unique_id=1916823795]
+position = Vector2(356, 363)
+
+[node name="Marker2D5" type="Marker2D" parent="BlobSpawnPositions" unique_id=1733420225]
+position = Vector2(618, 238)
+
+[node name="Marker2D6" type="Marker2D" parent="BlobSpawnPositions" unique_id=1663573275]
+position = Vector2(510, 67)
+
+[node name="Marker2D7" type="Marker2D" parent="BlobSpawnPositions" unique_id=177152593]
+position = Vector2(694, 109)
+
 [connection signal="build" from="Objects/Player" to="." method="_on_player_build"]
 [connection signal="day_change" from="Objects/Player" to="." method="_on_player_day_change"]
 [connection signal="diagnose" from="Objects/Player" to="." method="_on_player_diagnose"]
 [connection signal="machine_change" from="Objects/Player" to="." method="_on_player_machine_change"]
 [connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]
+[connection signal="timeout" from="Timers/BlobTimer" to="." method="_on_blob_timer_timeout"]

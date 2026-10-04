@@ -4,6 +4,7 @@ var used_cells: Array[Vector2i]
 var plant_scene = preload("res://scenes/objects/plant.tscn")
 var plant_info_scene = preload("res://scenes/ui/plant_info.tscn")
 var projectile_scene = preload("res://scenes/machines/projectile.tscn")
+var blob_scene = preload("res://scenes/objects/blob.tscn")
 var machine_scenes = {
 	Enum.Machine.SPRINKLER: preload("res://scenes/machines/sprinkler.tscn"),
 	Enum.Machine.SCARECROW: preload("res://scenes/machines/scarecrow.tscn"),
@@ -25,6 +26,7 @@ const MACHINE_PREVIEW_TEXTURES = {
 	Enum.Machine.FISHER: {'texture':preload("res://graphics/icons/fisher.png"), 'offset': Vector2i(0,-4)},
 	Enum.Machine.SCARECROW: {'texture':preload("res://graphics/icons/scarecrow.png"), 'offset': Vector2i(0,-4)},
 	Enum.Machine.DELETE: {'texture':preload("res://graphics/icons/delete.png"), 'offset': Vector2i(0,0)}}
+#region player
 func _on_player_tool_use(tool: int, pos: Vector2) -> void:
 	var grid_coord: Vector2i = Vector2i(int(pos.x / Data.TILE_SIZE),int(pos.y / Data.TILE_SIZE))
 	grid_coord.x += -1 if pos.x < 0 else 0
@@ -67,8 +69,11 @@ func _on_player_build(current_machine: Variant) -> void:
 	if current_machine != Enum.Machine.DELETE:
 		var machine = machine_scenes[current_machine].instantiate()
 		machine.setup(player.get_machine_coords(), self, $Objects)
+	else:
+		for machine in get_tree().get_nodes_in_group("Machines")
 func _on_player_machine_change(current_machine: int) -> void:
 	$Overlay/MachinePreviewSprite.texture = MACHINE_PREVIEW_TEXTURES[current_machine]['texture']
+#endregion
 func _process(_delta: float) -> void:
 	var daytime_point = 1 - ($Timers/DaylightTimer.time_left / $Timers/DaylightTimer.wait_time)
 	var color = daytime_color.sample(daytime_point).lerp(rain_color, 0.5 if raining else 0.0)
@@ -110,3 +115,17 @@ func create_projectile(start_pos: Vector2, dir: Vector2):
 	var projectile = projectile_scene.instantiate()
 	projectile.setup(start_pos, dir)
 	$Objects.add_child(projectile)
+func water_plants(coord: Vector2i):
+	const SOIL_DIRECTIONS = [
+		Vector2i(-1, -1), Vector2i(0, -1), Vector2i(1, -1),
+		Vector2i(-1,  0),Vector2i(1,0), Vector2i(-1,  1), 
+		Vector2i(0,  1), Vector2i(1,  1)]
+	for dir in SOIL_DIRECTIONS:
+		var cell = coord + dir
+		if cell in $Layers/SoilLayer.get_used_cells():
+			$Layers/SoilLayer.set_cell(cell, 0, Vector2i(randi_range(0,2), 0))
+func _on_blob_timer_timeout() -> void:
+	var plants = get_tree().get_nodes_in_group("Plants")
+	var blob = blob_scene.instantiate()
+	var pos = $BlobSpawnPositions.get_children().pick_random().position
+	blob.setup(pos, plants.pick_random(),$Objects)
